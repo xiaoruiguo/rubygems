@@ -139,11 +139,11 @@ module Gem::InstallUpdateOptions
       options[:dev_shallow] = false
     end
 
-    add_option(:"Install/Update", "--conservative",
+    add_option(:"Install/Update", "--[no-]conservative",
                 "Don't attempt to upgrade gems already",
                 "meeting version requirement") do |value, options|
-      options[:conservative] = true
-      options[:minimal_deps] = true
+      options[:conservative] = value
+      options[:minimal_deps] = value
     end
 
     add_option(:"Install/Update", "--minimal-deps",

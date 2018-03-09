@@ -95,7 +95,7 @@ class Gem::RequestSet
     @dependencies = deps
 
     @always_install      = []
-    @conservative        = false
+    @conservative        = true
     @dependency_names    = {}
     @development         = false
     @development_shallow = false
@@ -224,7 +224,7 @@ class Gem::RequestSet
     @install_dir = options[:install_dir] || Gem.dir
     @prerelease  = options[:prerelease]
     @remote      = options[:domain] != :local
-    @conservative = true if options[:conservative]
+    @conservative = options[:conservative].nil? ? true : options[:conservative]
 
     gem_deps_api = load_gemdeps gemdeps, options[:without_groups], true
 
